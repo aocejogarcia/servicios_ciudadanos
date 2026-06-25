@@ -32,6 +32,15 @@
     }
 }
 
+body.dark-mode {
+    background-color: #0f172a;
+    color: #f1f5f9;
+}
+
+body.dark-mode .navegacion-sitio {
+    background-color: #1e293b;
+}
+
 body {
     display: grid;
     grid-template-areas:
@@ -41,6 +50,59 @@ body {
         "pie";
     gap: 1rem;
     font-family: Arial, sans-serif;
+}
+
+.toggle-switch-wrapper {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1000;
+}
+
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 48px;
+    height: 28px;
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    inset: 0;
+    background-color: #cbd5e1;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.slider:before {
+    position: absolute;
+    content: '';
+    height: 22px;
+    width: 22px;
+    left: 3px;
+    top: 3px;
+    background-color: #fff;
+    border-radius: 50%;
+    transition: transform 0.2s ease;
+}
+
+.toggle-switch input:checked + .slider {
+    background-color: var(--color-principal);
+}
+
+.toggle-switch input:checked + .slider:before {
+    transform: translateX(20px);
+}
+
+.toggle-switch input:focus-visible + .slider {
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.35);
 }
 
 .navegacion-sitio {
